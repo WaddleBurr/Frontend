@@ -5,14 +5,22 @@ function ClassForm(){
   return(
     <form>
       <label>
-        Enter class name:
-        <input type="text" />
+        Enter course name:
+        <input type="text" id = 'coursetext'/>
+      </label>
+        <label>
+        Enter room name:
+        <input type="text" id = 'roomtext'/>
+      </label>
+      <label>
+        Enter teacher name:
+        <input type="text" id = 'teachertext'/>
       </label>
     </form>
+
   )
 }
 createRoot(document.getElementById('root')).render(
   <ClassForm />
 );
-
 export default ClassForm;

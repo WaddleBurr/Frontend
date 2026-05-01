@@ -4,7 +4,7 @@ import ClassForm from './ClassForm';
 
 function App() {
   return (
-    <ClassForm name="Math"
+    <ClassForm name="ClassForm"
     />
   );
 }
