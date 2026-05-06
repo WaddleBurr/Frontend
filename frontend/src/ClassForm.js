@@ -1,14 +1,16 @@
-import "./App.css";
-import {React} from "react";
-import { createRoot } from 'react-dom/client'
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 const  ClassForm = () => {
   const API_BASE_URL = 'http://10.81.224.195:5000/api/classes';
-    const [classes, setClasses] = useState([]);
-    const [selectedClass, setSelectedClass] = useState(null);
-    const [formData, setFormData] = useState({ class_name: '', teacher: '', subject: '', classroom: '', classid: '', description: ''    });
-
-
+  const [classes, setClasses] = useState([]);
+  const [selectedClass, setSelectedClass] = useState(null);
+  const [formData, setFormData] = useState({ 
+    class_name: '', 
+    teacher: '', 
+    subject: '', 
+    classroom: '', 
+    classid: '', 
+    description: ''
+  });
       // READ (Get all classes)
     const fetchClasses = async () => {
         try {
@@ -30,6 +32,7 @@ const  ClassForm = () => {
     };
 
     const handleSelect = (classes) => {
+        console.log("check")
         setSelectedClass(classes);
         setFormData({ 
             class_name: classes.class_name, 
@@ -38,7 +41,7 @@ const  ClassForm = () => {
             classroom: classes.classroom,
             classid: classes.classid,
             description: classes.description
-        });
+        });      
     };
     // CREATE (POST)
     const handleCreate = async () => {
@@ -59,6 +62,7 @@ const  ClassForm = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         });
+        console.log(formData)
         if (res.ok) {
             fetchClasses(); 
             handleClear();
@@ -79,32 +83,32 @@ const  ClassForm = () => {
     <form>
       <label>
         Enter class name:
-        <input name="class_name" value={classes.class_name} onChange={handleChange} id = 'class_name' className="form-control"/>
+        <input name="class_name" value={classes.class_name} onChange={handleChange} className="form-control"/>
       </label>
       <br></br>
       <label>
         Enter teacher name:
-        <input name="teacher" value={classes.teacher} onChange={handleChange} id = 'teacher' className="form-control"/>
+        <input name="teacher" value={classes.teacher} onChange={handleChange} className="form-control"/>
       </label>
       <br></br>
       <label>
         Enter subject name:
-        <input name="subject" value={classes.subject} onChange={handleChange} id = 'subject' className="form-control"/>
+        <input name="subject" value={classes.subject} onChange={handleChange} className="form-control"/>
       </label>
       <br></br>
         <label>
         Enter room name: 
-        <input name="classroom" value={classes.classroom} onChange={handleChange} id = 'classroom' className="form-control"/>
+        <input name="classroom" value={classes.classroom} onChange={handleChange} className="form-control"/>
       </label>
       <br></br>
         <label>
         Enter classid:
-        <input name="classid" value={classes.classid} onChange={handleChange} id = 'classid' className="form-control"/>
+        <input name="classid" value={classes.classid} onChange={handleChange} className="form-control"/>
       </label>
       <br></br>
         <label>
         Enter description:
-        <input name="description" value={classes.description} onChange={handleChange} id = 'description' className="form-control"/>
+        <input name="description" value={classes.description} onChange={handleChange} className="form-control"/>
       </label>
                 <div className="mt-3 d-flex gap-2">
                     <button className="btn btn-primary" onClick={handleCreate} disabled={selectedClass !== null}>
@@ -136,7 +140,4 @@ const  ClassForm = () => {
 
   )
 }
-createRoot(document.getElementById('root')).render(
-  <ClassForm />
-);
 export default ClassForm;
