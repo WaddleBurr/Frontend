@@ -80,35 +80,35 @@ const  ClassForm = () => {
     };
 
   return(
-    <form>
+    <form onSubmit={(e) => e.preventDefault()}>
       <label>
         Enter class name:
-        <input name="class_name" value={classes.class_name} onChange={handleChange} className="form-control"/>
+        <input name="class_name" value={formData.class_name} onChange={handleChange} className="form-control"/>
       </label>
       <br></br>
       <label>
         Enter teacher name:
-        <input name="teacher" value={classes.teacher} onChange={handleChange} className="form-control"/>
+        <input name="teacher" value={formData.teacher} onChange={handleChange} className="form-control"/>
       </label>
       <br></br>
       <label>
         Enter subject name:
-        <input name="subject" value={classes.subject} onChange={handleChange} className="form-control"/>
+        <input name="subject" value={formData.subject} onChange={handleChange} className="form-control"/>
       </label>
       <br></br>
         <label>
         Enter room name: 
-        <input name="classroom" value={classes.classroom} onChange={handleChange} className="form-control"/>
+        <input name="classroom" value={formData.classroom} onChange={handleChange} className="form-control"/>
       </label>
       <br></br>
         <label>
         Enter classid:
-        <input name="classid" value={classes.classid} onChange={handleChange} className="form-control"/>
+        <input name="classid" value={formData.classid} onChange={handleChange} className="form-control"/>
       </label>
       <br></br>
         <label>
         Enter description:
-        <input name="description" value={classes.description} onChange={handleChange} className="form-control"/>
+        <input name="description" value={formData.description} onChange={handleChange} className="form-control"/>
       </label>
                 <div className="mt-3 d-flex gap-2">
                     <button className="btn btn-primary" onClick={handleCreate} disabled={selectedClass !== null}>
